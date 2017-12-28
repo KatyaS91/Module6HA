@@ -1,10 +1,10 @@
 package pages;
 
-import bonustask.FindByWithWait;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.How;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
@@ -23,7 +23,7 @@ public class LoginPage extends BaseMailPage {
 	public WebElement nextBtn;
 	@FindBy(css = PASSWORD_INPUT_CSS)
 	public WebElement passwordInput;
-	@FindByWithWait(id = "identifierId", time = 5000)
+	@FindBy(how = How.ID, using = LOGIN_CSS)
 	public WebElement loginInput;
 
 	public LoginPage(WebDriver driver) {
