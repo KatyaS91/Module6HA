@@ -3,6 +3,8 @@ package pages;
 import org.openqa.selenium.By;
 import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 import static data.TestData.LOGIN;
 
@@ -19,6 +21,7 @@ public class BaseMailPage extends MailAbstractPage {
 	private String sendXpath = "//div[contains(text(), 'Отправить')]";
 	private String draftBtnXpath = "//*[contains(@aria-label, 'Черновики')]";
 	private String sentBtnXpath = "//*[contains(@title, 'Отправленные')]";
+	private String letterIsCreatedIndicator = "//span[text() = 'Сохранено']";
 
 	BaseMailPage(WebDriver driver) {
 		super(driver);
@@ -29,7 +32,7 @@ public class BaseMailPage extends MailAbstractPage {
 		driver.findElement(By.xpath(addressXpath)).sendKeys(address);
 		driver.findElement(By.xpath(subjectXpath)).sendKeys(subject);
 		driver.findElement(By.xpath(bodyXpath)).sendKeys(body);
-		Thread.sleep(5000);
+		new WebDriverWait(driver, 5).until(ExpectedConditions.visibilityOfElementLocated(By.xpath(letterIsCreatedIndicator)));
 	}
 
 	public boolean isPageOpened() {
@@ -51,7 +54,6 @@ public class BaseMailPage extends MailAbstractPage {
 
 	public SentPage openSentMails() throws InterruptedException {
 		driver.findElement(By.xpath(sentBtnXpath)).click();
-		Thread.sleep(3000);
 		return new SentPage(driver);
 	}
 
