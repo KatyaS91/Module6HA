@@ -37,6 +37,8 @@ public class CustomAnnotation extends Annotations {
 			return By.tagName(using);
 		case XPATH:
 			return By.xpath(using);
+		case CSS:
+			return By.cssSelector(using);
 		default:
 			throw new IllegalArgumentException("Cannot determine how to locate element ");
 		}
