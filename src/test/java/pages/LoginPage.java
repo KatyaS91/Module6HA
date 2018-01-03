@@ -15,11 +15,11 @@ import static data.TestData.PASSWORD;
 public class LoginPage extends BaseMailPage {
 
 	@FindBy(css = "div [id*= 'Next']")
-	public WebElement nextBtn;
+	private WebElement nextBtn;
 	@FindBy(css = "input[type = 'password']")
-	public WebElement passwordInput;
+	private WebElement passwordInput;
 	@FindBy(css = "#identifierId")
-	public WebElement loginInput;
+	private WebElement loginInput;
 
 	public LoginPage(WebDriver driver) {
 		super(driver);
