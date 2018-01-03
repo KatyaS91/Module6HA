@@ -11,7 +11,7 @@ import static data.TestData.LOGIN;
 /**
  * Created by Katsiaryna_Skarzhyns on 12/27/2017.
  */
-public class BaseMailPage extends MailAbstractPage {
+public class BaseMailPage extends AbstractMailPage {
 	private String accountLogoXpath = "//*[contains(@title, '%s')]";
 
 	@FindBy(xpath = "//a[contains(text(), 'Выйти')]")
